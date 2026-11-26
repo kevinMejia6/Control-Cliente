@@ -12,5 +12,6 @@
   const preference=read();
   document.documentElement.dataset.theme=preference.theme||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
   document.documentElement.dataset.sidebar=preference.sidebarOpen?'open':'closed';
+  document.documentElement.dataset.auth='checking';
   window.NexoAppearance={key,read,save};
 })();

@@ -71,7 +71,7 @@ Validación: `npm test` comprueba tiempos al recargar, etapas repetidas, cierres
 
 ## Cuenta y guardado en la nube
 
-El botón **Conectar mi cuenta** permite crear una cuenta o iniciar sesión con **correo y contraseña** (Firebase Authentication) e incluye «Olvidé mi contraseña». Cada cuenta guarda sus datos en `nexo/<uid>/workspace` de Realtime Database; las reglas de `firebase/database.rules.json` solo permiten leer y escribir al dueño, con control de revisión para no pisar cambios de otro equipo.
+Nexo pide **iniciar sesión** con correo y contraseña (Firebase Authentication) antes de mostrar cualquier dato; la pantalla de acceso incluye «Olvidé mi contraseña» y no permite crear cuentas. Las cuentas nuevas se agregan desde Firebase → Authentication → Usuarios → Agregar usuario. Al cerrar sesión con todo guardado en la nube, se borra la copia de ese navegador. Cada cuenta guarda sus datos en `nexo/<uid>/workspace` de Realtime Database; las reglas de `firebase/database.rules.json` solo permiten leer y escribir al dueño, con control de revisión para no pisar cambios de otro equipo.
 
 Al conectar por primera vez, la app pregunta si subir los datos de este navegador o cargar los de la nube; nunca sube otra cuenta automáticamente. Sin internet se sigue guardando en el navegador y se sincroniza al reconectar.
 
