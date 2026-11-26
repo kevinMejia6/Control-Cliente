@@ -57,3 +57,14 @@ Las licencias de Inter y Font Awesome están incluidas junto a sus archivos.
 La pantalla inicial muestra clientes y sus cantidades pendientes/finalizadas. La navegación principal tiene dos opciones: **Clientes** y **Pendientes**. Dentro de cada cliente se consultan pendientes, finalizados o todos los casos y se registra una nueva solicitud.
 
 Cada caso muestra su estado, prioridad, responsable y fechas, con un espacio directo para guardar avances. **Finalizar caso** solicita quién dio el visto bueno y conserva el historial. Los correos y datos complementarios del formulario, los archivos, recordatorios y acciones de revisión/escalamiento se despliegan solo cuando se necesitan. Se conservan los registros anteriores y localStorage; no hay migración destructiva.
+
+### Seguimiento automático y puntos por cliente
+
+- El cliente muestra sus puntos abiertos por estado: nuevos, desarrollo (incluye escalados), pruebas (incluye por revisar), corrección, capacitación y en curso si corresponde. Cada caso abierto cuenta una sola vez; tocar un contador filtra la lista.
+- Cada caso mide automáticamente el tiempo calendario por estado y conserva la bitácora de cambios, avances, revisiones y aprobaciones. Las esperas, noches y fines de semana cuentan. El tiempo de trabajo manual es un dato separado.
+- Los tiempos usan fechas guardadas en `nexo-v1`, por lo que siguen siendo correctos al cerrar y volver a abrir la página. Finalizar detiene la medición de seguimiento; reabrir inicia otra etapa y conserva los tiempos previos, excluyendo el intervalo cerrado.
+- Los casos anteriores comienzan una medición parcial al abrir por primera vez esta versión. No se reconstruyen tiempos históricos sin evidencia. El promedio de cierre del cliente solo incluye cierres medidos desde el registro; el acumulado de desarrollo suma el tiempo de cada caso.
+- Los respaldos JSON conservan las etapas y tiempos. Se admiten respaldos antiguos, iniciando una medición parcial al restaurarlos. El CSV añade tiempos por estado en minutos y señala si la medición es parcial.
+- La bitácora registra el nombre del perfil local; no equivale a autenticación multiusuario. Los datos siguen siendo propios del navegador, sin sincronización.
+
+Validación: `npm test` comprueba tiempos al recargar, etapas repetidas, cierres y reaperturas, migración sin duplicados, métricas aisladas por cliente, respaldos, adjuntos, recordatorios y errores de almacenamiento.
