@@ -26,7 +26,7 @@ Los datos pertenecen al navegador y al dominio donde se abren. No se sincronizan
 
 Los adjuntos admiten **1 MB por archivo** y **1.5 MB por selección**; el conjunto codificado tiene un límite de 2 millones de caracteres para reservar espacio a los registros. La capacidad real depende del navegador. Si un guardado supera la cuota, se muestra un error y se conserva la versión anterior.
 
-Para traer información del sitio anterior, descarga allí un respaldo y restáuralo en GitHub Pages. Los archivos que superen los nuevos límites deben reducirse antes de restaurarlos. El sitio comienza con ejemplos identificados.
+Para traer información del sitio anterior, descarga allí un respaldo y restáuralo en GitHub Pages. Los archivos que superen los nuevos límites deben reducirse antes de restaurarlos. El sitio comienza vacío, sin datos de ejemplo. Si un navegador aún tiene los ejemplos anteriores, la pantalla Clientes muestra «Quitar datos de ejemplo».
 
 Los recordatorios con sonido requieren mantener la página abierta y pulsar **Activar sonido** en cada sesión. No hay notificaciones con el navegador cerrado. La aprobación registra un nombre manual; no es una firma autenticada ni un sistema multiusuario.
 
@@ -78,3 +78,7 @@ Al conectar por primera vez, la app pregunta si subir los datos de este navegado
 Requisito en Firebase (proyecto `lastone-bsgkdw`): **Authentication → Sign-in method → Correo electrónico/contraseña → Habilitar**, y el dominio `kevinmejia6.github.io` en los dominios autorizados.
 
 La app se puede instalar (manifest y service worker en la raíz del sitio).
+
+### Tiempo en la bitácora
+
+La bitácora de cada caso muestra arriba la etapa actual y cuánto lleva en ella (se actualiza sola), con el acumulado por estado. Cada cambio de estado indica cuánto estuvo el caso en la etapa anterior.
