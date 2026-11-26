@@ -9,6 +9,7 @@
     menu.innerHTML=`<div class="user-menu-head"><span class="avatar purple">${esc(initials(data.profile))}</span><div><strong>${esc(data.profile)}</strong>${email?`<small>${esc(email)}</small>`:''}</div></div>`
       +item('account','cloud','Mi cuenta y guardado')
       +item('name','pen','Cambiar mi nombre')
+      +(email?item('email','at','Cambiar mi correo'):'')
       +item('theme',dark?'sun':'moon',dark?'Modo claro':'Modo oscuro')
       +'<div class="user-menu-sep" role="separator"></div>'
       +item('backup','download','Descargar respaldo')
@@ -24,6 +25,7 @@
   const actions={
     account:()=>window.NexoCloud?.panel(),
     name:()=>document.querySelector('#profile-edit')?.click(),
+    email:()=>window.NexoCloud?.changeEmail(),
     theme:()=>document.querySelector('#theme-toggle')?.click(),
     backup:()=>document.querySelector('#backup')?.click(),
     restore:()=>document.querySelector('#restore')?.click(),
