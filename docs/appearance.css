@@ -116,3 +116,41 @@
 :root[data-theme="dark"] .danger{color:#ffb1ad}
 @media(max-width:760px){:root[data-theme="dark"] .reminder-actions button{background:#392d48}}
 .reminder-bell .reminder-label,:root[data-theme="dark"] .reminder-bell .reminder-label,:root[data-theme="dark"] .reminder-bell.has-reminders .reminder-label{background:transparent;padding:0;color:inherit;min-width:0;font-size:inherit}
+/* Keep every sidebar action reachable at short heights and browser zoom. */
+#sidebar{
+  inset-block-start:0;
+  inset-block-end:auto;
+  height:100vh;
+  height:100dvh;
+  max-height:100dvh;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior-y:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#625878 transparent;
+  padding-bottom:max(16px,env(safe-area-inset-bottom));
+  scroll-padding-block:16px;
+}
+#sidebar>*{flex-shrink:0}
+#sidebar .profile{flex-shrink:0}
+#sidebar::-webkit-scrollbar{width:6px}
+#sidebar::-webkit-scrollbar-thumb{background:#625878;border-radius:8px}
+#sidebar::-webkit-scrollbar-track{background:transparent}
+@media(max-height:850px){
+  #sidebar{padding-top:20px}
+  #sidebar .workspace{margin-top:21px;margin-bottom:20px}
+  #sidebar nav{gap:6px;margin-top:12px}
+  #sidebar .sidebar-note{padding:14px;margin-top:20px}
+  #sidebar .sidebar-note .note-icon{display:none}
+  #sidebar .profile{margin-top:15px;padding-top:14px;padding-bottom:10px}
+}
+@media(max-height:650px){
+  #sidebar .workspace{margin-top:14px;margin-bottom:14px}
+  #sidebar .sidebar-note{margin-top:16px}
+  #sidebar .sidebar-note p{display:none}
+  #sidebar .sidebar-note strong{display:block;margin-bottom:7px}
+}
+@media(max-height:850px){#sidebar .sidebar-note p{display:none}}
+@media(max-width:1200px){#sidebar nav button{font-size:13px;white-space:nowrap;gap:9px}#sidebar nav .count{font-size:11px}}
+
