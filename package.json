@@ -1,0 +1,8 @@
+{
+  "name": "control-cliente",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Gestión de clientes y casos con almacenamiento local en el navegador",
+  "scripts": {"test": "node --test tests/*.cjs"},
+  "engines": {"node": ">=22"}
+}
