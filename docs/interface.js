@@ -1,7 +1,7 @@
 'use strict';
 const menuButton=$('#menu'),sidebarOverlay=$('#sidebar-overlay');
-const uiIcons={overview:'grid',cases:'cases',clients:'users',activity:'clock',reminders:'bell'};
-const uiNames={overview:'Inicio',cases:'Casos',clients:'Clientes',activity:'Actividad',reminders:'Avisos'};
+const uiIcons={clients:'users',cases:'cases'};
+const uiNames={clients:'Clientes',cases:'Pendientes'};
 const sidebarBreakpoint=window.matchMedia('(max-width:900px)');
 function syncSidebar(){
   const mobile=sidebarBreakpoint.matches;
@@ -58,17 +58,24 @@ window.addEventListener('storage',event=>{
   syncSidebar();
 });
 updateThemeButton();
-$('.brand').onclick=e=>{e.preventDefault();go('overview')};
+$('.brand').onclick=e=>{e.preventDefault();go('clients')};
 function polishInterface(){
   closeSidebar();
-  if(page==='detail'&&!$('.case-jumps')){
-    const grid=$('.detail-grid');
-    const links=[['Detalle','.detail-grid > div > .panel'],['Archivos','.attachments-panel'],['Seguimiento','.detail-grid > .panel']];
-    if(grid){grid.insertAdjacentHTML('beforebegin',`<div class="case-jumps">${links.map(([title,target])=>`<button data-jump="${target}">${title}</button>`).join('')}</div>`);
-      $$('[data-jump]').forEach(b=>b.onclick=()=>$(b.dataset.jump)?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'}));
-    }
+  if(page==='detail'){
+    [['.attachments-panel','Archivos adjuntos'],['.case-reminders-panel','Recordatorios de este caso']].forEach(([selector,label])=>{
+      const panel=$(selector);if(!panel||panel.parentElement.classList.contains('simple-fold'))return;
+      const fold=document.createElement('details');fold.className='simple-fold';
+      const summary=document.createElement('summary');summary.textContent=label;fold.append(summary);
+      panel.before(fold);fold.append(panel);
+    });
   }
-  const current=page==='detail'?'cases':page==='client'?'clients':page;
+  if($('#client-search'))$('#client-search').oninput=e=>{
+    const query=e.target.value.trim().toLocaleLowerCase('es');let visible=0;
+    $$('.client-entry').forEach(entry=>{entry.hidden=!entry.textContent.toLocaleLowerCase('es').includes(query);if(!entry.hidden)visible++});
+    $('#client-no-results').hidden=visible>0;
+  };
+  $$('[data-client-view]').forEach(button=>button.onclick=()=>{clientView=button.dataset.clientView;render()});
+  const current=page==='detail'||page==='client'?'clients':page;
   $('#mobile-navigation').innerHTML=Object.keys(uiNames).map(p=>`<button data-mobile-page="${p}" class="${p===current?'active':''}" ${p===current?'aria-current="page"':''}>${icon(uiIcons[p])}<span>${uiNames[p]}</span></button>`).join('');
   $$('[data-mobile-page]').forEach(b=>b.onclick=()=>go(b.dataset.mobilePage));
   $$('[data-stat]').forEach(b=>b.onclick=()=>{

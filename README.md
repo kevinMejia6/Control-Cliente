@@ -51,3 +51,9 @@ python3 -m http.server 4173 --directory docs
 Abre http://localhost:4173. Las pruebas verifican horarios, archivos, respaldos y conservación de datos cuando localStorage está lleno. No requieren dependencias externas.
 
 Las licencias de Inter y Font Awesome están incluidas junto a sus archivos.
+
+## Flujo sencillo para Esteff
+
+La pantalla inicial muestra clientes y sus cantidades pendientes/finalizadas. La navegación principal tiene dos opciones: **Clientes** y **Pendientes**. Dentro de cada cliente se consultan pendientes, finalizados o todos los casos y se registra una nueva solicitud.
+
+Cada caso muestra su estado, prioridad, responsable y fechas, con un espacio directo para guardar avances. **Finalizar caso** solicita quién dio el visto bueno y conserva el historial. Los correos y datos complementarios del formulario, los archivos, recordatorios y acciones de revisión/escalamiento se despliegan solo cuando se necesitan. Se conservan los registros anteriores y localStorage; no hay migración destructiva.
