@@ -8,3 +8,6 @@
 .auth-error{margin:4px 0 0;padding:10px 12px;border-radius:10px;background:#fff1ec;color:#a0412a;font-size:13px;line-height:1.5}.auth-error[hidden]{display:none}.auth-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:6px}
 :root[data-theme=dark] .auth-error{background:#40261f;color:#f3b9a3}
 .form-actions[hidden]{display:none}
+.page-heading .btn+.btn{margin-left:8px}.btn.btn-delete{color:#b5413a;border-color:#f0d2cf;background:#fff}.btn.btn-delete:hover{background:#fdf0ee}.btn.btn-delete i{margin-right:6px}.btn.primary.btn-delete-confirm{background:#c2453d;border-color:#c2453d}.btn.primary.btn-delete-confirm:hover{background:#a8372f}
+:root[data-theme=dark] .btn.btn-delete{color:#ffb1ad;border-color:#5a3434;background:transparent}:root[data-theme=dark] .btn.btn-delete:hover{background:#3a2424}
+@media(max-width:600px){.btn.btn-delete{padding-left:12px;padding-right:12px}}
