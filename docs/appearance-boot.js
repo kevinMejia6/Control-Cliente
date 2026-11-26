@@ -7,7 +7,7 @@
     return {theme:['light','dark'].includes(value.theme)?value.theme:null,sidebarOpen:typeof value.sidebarOpen==='boolean'?value.sidebarOpen:true};
   }
   function save(patch){
-    try{localStorage.setItem(key,JSON.stringify({...read(),...patch}));return true}catch{return false}
+    try{localStorage.setItem(key,JSON.stringify({...read(),...patch}));if(window.NexoCloud)window.NexoCloud.saved();return true}catch{return false}
   }
   const preference=read();
   document.documentElement.dataset.theme=preference.theme||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');

@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Nexo · Clientes y seguimiento",
+  "short_name": "Nexo",
+  "description": "Tus clientes, puntos y avances en un solo lugar. Desarrollado por SOFTEX.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f9fc",
+  "theme_color": "#7052d8",
+  "icons": [
+    {
+      "src": "docs/icons/nexo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "docs/icons/nexo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

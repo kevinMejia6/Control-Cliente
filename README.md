@@ -68,3 +68,13 @@ Cada caso muestra su estado, prioridad, responsable y fechas, con un espacio dir
 - La bitácora registra el nombre del perfil local; no equivale a autenticación multiusuario. Los datos siguen siendo propios del navegador, sin sincronización.
 
 Validación: `npm test` comprueba tiempos al recargar, etapas repetidas, cierres y reaperturas, migración sin duplicados, métricas aisladas por cliente, respaldos, adjuntos, recordatorios y errores de almacenamiento.
+
+## Cuenta y guardado en la nube
+
+El botón **Conectar mi cuenta** permite crear una cuenta o iniciar sesión con **correo y contraseña** (Firebase Authentication) e incluye «Olvidé mi contraseña». Cada cuenta guarda sus datos en `nexo/<uid>/workspace` de Realtime Database; las reglas de `firebase/database.rules.json` solo permiten leer y escribir al dueño, con control de revisión para no pisar cambios de otro equipo.
+
+Al conectar por primera vez, la app pregunta si subir los datos de este navegador o cargar los de la nube; nunca sube otra cuenta automáticamente. Sin internet se sigue guardando en el navegador y se sincroniza al reconectar.
+
+Requisito en Firebase (proyecto `lastone-bsgkdw`): **Authentication → Sign-in method → Correo electrónico/contraseña → Habilitar**, y el dominio `kevinmejia6.github.io` en los dominios autorizados.
+
+La app se puede instalar (manifest y service worker en la raíz del sitio).

@@ -29,6 +29,7 @@ function saveLocalData(next){
   localStorage.setItem('nexo-v1',JSON.stringify(next));
   data=next;
   saveFailure='';
+  if(typeof window!=='undefined'&&window.NexoCloud)window.NexoCloud.saved();
 }
 async function readFiles(caseId){return(data.attachmentFiles||[]).filter(f=>!caseId||f.caseId===caseId).map(decodeAttachment);}
 async function writeFiles(records,replace=false){

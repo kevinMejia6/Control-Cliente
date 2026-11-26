@@ -9,7 +9,7 @@ function seed(){const clients=[{id:'c1',name:'Clínica Integral',contact:'Andrea
 let data;try{data=JSON.parse(localStorage.getItem('nexo-v1'))||seed()}catch{data=seed()}let page='clients',selectedClient='',caseTab='all',clientView='open',clientPointGroup='',filters={q:'',status:'',client:'',priority:''};const modal=$('#modal');
 let saveFailure='';
 function persist(){
-  try{localStorage.setItem('nexo-v1',JSON.stringify(data));saveFailure='';return true}
+  try{localStorage.setItem('nexo-v1',JSON.stringify(data));saveFailure='';if(window.NexoCloud)window.NexoCloud.saved();return true}
   catch{
     try{const previous=localStorage.getItem('nexo-v1');if(previous)data=JSON.parse(previous)}catch{}
     saveFailure='No se pudo guardar. El almacenamiento está lleno o bloqueado. Descarga un respaldo; se conservaron los datos anteriores.';
